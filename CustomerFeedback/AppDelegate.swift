@@ -15,7 +15,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print(binPow(a: 3, b: 13))
         return true
+    }
+    
+    func binPowrecursive(a: Int, b: Int) -> Int {
+        if b == 0 { return 1}
+        var res = 1
+        let temp = binPow(a: a, b: b / 2)
+        res = temp * temp
+        if (b % 2) == 1 {
+            res = res * a
+        }
+        return res
+    }
+    
+    func binPow(a: Int, b: Int) -> Int {
+        var b = b
+        var a = a
+        var res = 1
+        while b > 0 {
+            if b % 2 == 1 {
+                res = res * a
+            }
+            a = a * a
+            b = b / 2
+        }
+        return res
     }
 
     // MARK: UISceneSession Lifecycle
